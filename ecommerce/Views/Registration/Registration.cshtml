@@ -1,0 +1,104 @@
+﻿@model ecommerce.Models.RegisrationModel
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+}
+
+<head>
+    <style>
+        #box {
+            border: 1px solid black;
+            height: 100%;
+        }
+
+        body {
+            background-size: cover; /* <------ */
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-image: url('../../Content/img/bg-img.jpg');
+        }
+
+        #inside-box {
+            border: 1px solid black;
+            margin: 10% auto 10% auto;
+            max-width: 500px;
+            min-width: 200px;
+            padding-left: 60px;
+            padding-right: 60px;
+            border-radius: 10px;
+            background-color: whitesmoke;
+        }
+
+        div h1 {
+            text-align: center;
+        }
+
+        p#para {
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery.js"></script>
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</head>
+
+@using (Html.BeginForm("Register", "Registration", FormMethod.Post))
+{
+    <div class="img-responsive">
+        <div id="inside-box">
+            <fieldset>
+                <center><legend>Registration</legend></center>
+                @Html.ValidationSummary(true)
+                <div>
+                    <table>
+                        <tr>
+                            <td>@Html.LabelFor(model => model.UserName)</td>
+                            <td>@Html.TextBoxFor(model => model.UserName, new { @class = "", placeholder = "Enter User Name", style = "margin-bottom:5px; margin-left:5px; margin-right:5px;" })</td>
+                            <td>@Html.ValidationMessageFor(model => model.UserName)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(model => model.Email)</td>
+                            <td>@Html.TextBoxFor(model => model.Email, new { @class = "", placeholder = "Enter Email", style = "margin-bottom:5px; margin-left:5px;" })</td>
+                            <td>@Html.ValidationMessageFor(model => model.Email)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(model => model.Mobile)</td>
+                            <td>@Html.TextBoxFor(model => model.Mobile, new { @class = "", placeholder = "Enter Mobile Number", style = "margin-bottom:5px; margin-left:5px;" })</td>
+                            <td>@Html.ValidationMessageFor(model => model.Mobile)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(model => model.Password)</td>
+                            <td>@Html.PasswordFor(model => model.Password, new { @class = "", placeholder = "Enter Password", style = "margin-bottom:5px; margin-left:5px;" })</td>
+                            <td>@Html.ValidationMessageFor(model => model.Password)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(model => model.ConfirmPassword)</td>
+                            <td>@Html.PasswordFor(model => model.ConfirmPassword, new { @class = "", placeholder = "Enter Password Again", style = "margin-bottom:5px; margin-left:5px;" })</td>
+                            <td>@Html.ValidationMessageFor(model => model.ConfirmPassword)</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="submit" value="Register" style=" margin-left:5px; margin-bottom:10px;" class="btn btn-success btn-block"   />
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </fieldset>
+            </div>
+        </div>
+            }
